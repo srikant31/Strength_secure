@@ -1,0 +1,16 @@
+{
+  "name": "password-checker-fullstack",
+  "version": "1.0.0",
+  "description": "Integrated frontend and backend for the SecureVault Password Checker",
+  "scripts": {
+    "install:all": "npm install --prefix password-checker-backend && npm install --prefix password-checker-frontend",
+    "build": "npm run build --prefix password-checker-frontend",
+    "start": "npm start --prefix password-checker-backend",
+    "dev:backend": "npm run dev --prefix password-checker-backend",
+    "dev:frontend": "npm run dev --prefix password-checker-frontend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

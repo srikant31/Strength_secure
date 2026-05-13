@@ -1,0 +1,171 @@
+/* ── Two-column auth layout ── */
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 800px) {
+  .wrap { grid-template-columns: 1fr; }
+  .left { display: none; }
+}
+
+/* ── Left decorative panel ── */
+.left {
+  background: linear-gradient(160deg, #0b0f1a, #0a0e18 60%, #061010);
+  padding: 40px 40px 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--bord);
+}
+.left::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,229,160,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Brand ── */
+.brand { display: flex; align-items: center; gap: 12px; }
+.brandIcon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: rgba(0,229,160,.08);
+  border: 1px solid rgba(0,229,160,.2);
+  display: flex; align-items: center; justify-content: center;
+  animation: glow 3s ease-in-out infinite;
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,229,160,.1); }
+  50%       { box-shadow: 0 0 40px rgba(0,229,160,.25); }
+}
+.brandName {
+  font-family: var(--disp);
+  font-size: 20px; font-weight: 800;
+  background: linear-gradient(120deg, var(--green) 30%, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Tagline ── */
+.tagline {
+  font-family: var(--disp);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.accent { color: var(--green); }
+.taglineSub {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.7;
+  margin-top: 10px;
+  max-width: 320px;
+}
+
+/* ── Feature list ── */
+.featList { display: flex; flex-direction: column; gap: 10px; }
+.featItem {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--bord);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.featItem:hover { border-color: rgba(0,229,160,.15); background: rgba(0,229,160,.03); }
+.featIcon  { font-size: 18px; }
+.featLabel { font-family: var(--disp); font-size: 13px; font-weight: 600; }
+.featDesc  { font-size: 11px; color: var(--t2); margin-top: 1px; }
+
+/* ── Scanlines overlay ── */
+.scanlines {
+  position: absolute; inset: 0;
+  pointer-events: none; opacity: 0.3;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(0,0,0,.08) 3px, rgba(0,0,0,.08) 4px
+  );
+}
+
+/* ── Right panel ── */
+.right {
+  background: var(--surface);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+.box {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 40px;
+  animation: fadeUp 0.4s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.title {
+  font-family: var(--disp);
+  font-size: 24px; font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.sub  { font-size: 13px; color: var(--t2); margin-top: 4px; }
+.link { color: var(--green); font-weight: 700; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+
+.footer {
+  font-size: 11px;
+  color: var(--t3);
+  text-align: center;
+  line-height: 1.6;
+  border-top: 1px solid var(--bord);
+  padding-top: 12px;
+}
+
+/* ── Terminal block (login page) ── */
+.term {
+  background: #050810;
+  border: 1px solid rgba(0,229,160,.15);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: var(--mono);
+}
+.termHdr {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 13px;
+  background: rgba(255,255,255,.02);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.tdot { width: 10px; height: 10px; border-radius: 50%; }
+.tlbl { font-size: 11px; color: var(--t3); margin-left: 5px; }
+.termBody { padding: 12px; display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--t2); }
+.tp  { color: var(--green); margin-right: 4px; }
+.tc  { color: var(--t1); }
+.tk  { color: var(--t3); min-width: 78px; display: inline-block; }
+.tv  { color: var(--blue); }
+.tst { color: var(--green); font-weight: 700; }
+
+/* ── Demo note ── */
+.demoNote {
+  font-size: 12px; color: var(--t3); text-align: center;
+  padding: 10px;
+  background: rgba(255,255,255,.02);
+  border-radius: 6px;
+  border: 1px dashed var(--bord);
+  line-height: 1.6;
+}

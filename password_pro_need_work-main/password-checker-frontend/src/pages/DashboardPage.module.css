@@ -1,0 +1,617 @@
+.wrap {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 680px) {
+  .wrap { grid-template-columns: 1fr; }
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  background: var(--card);
+  border-right: 1px solid var(--bord);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 12px;
+  gap: 18px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--disp);
+  font-size: 14px;
+  font-weight: 800;
+  background: linear-gradient(120deg, var(--green), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--t2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: 0.2s;
+  font-family: var(--mono);
+}
+.navBtn:hover   { background: var(--hov); color: var(--t1); }
+.navActive {
+  background: rgba(0, 229, 160, 0.08);
+  color: var(--green);
+  border: 1px solid rgba(0, 229, 160, 0.15);
+}
+
+.navIcon { font-size: 14px; width: 18px; text-align: center; }
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-top: 13px;
+  border-top: 1px solid var(--bord);
+}
+
+.userRow  { display: flex; align-items: center; gap: 9px; }
+.avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--disp);
+  font-weight: 800;
+  font-size: 13px;
+  color: #07090f;
+}
+.uname  { font-size: 13px; font-weight: 700; }
+.uemail { font-size: 11px; color: var(--t3); }
+
+/* ── Main area ── */
+.main { display: flex; flex-direction: column; overflow-y: auto; }
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 32px 18px;
+  border-bottom: 1px solid var(--bord);
+  gap: 14px;
+}
+@media (max-width: 680px) { .header { padding: 16px; } }
+
+.title { font-family: var(--disp); font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+.sub   { font-size: 12px; color: var(--t2); margin-top: 4px; line-height: 1.5; }
+
+.body { padding: 24px 32px; }
+@media (max-width: 680px) { .body { padding: 16px; } }
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--bord);
+  border-radius: 14px;
+  padding: 20px;
+  max-width: 640px;
+}
+
+/* ── Empty state ── */
+.empty {
+  text-align: center;
+  padding: 36px 18px;
+  color: var(--t3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.emptyIcon { font-size: 34px; opacity: 0.4; }
+
+/* ── History ── */
+.histList { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
+
+/* ── Change password note ── */
+.changeNote {
+  font-size: 12px;
+  color: var(--t2);
+  line-height: 1.7;
+  padding: 10px 13px;
+  background: rgba(0, 150, 255, 0.05);
+  border: 1px solid rgba(0, 150, 255, 0.15);
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+.histItem {
+  display: grid;
+  grid-template-columns: 24px 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--inp);
+  border: 1px solid var(--bord);
+  border-radius: 9px;
+  font-size: 12px;
+}
+.histRank { font-size: 11px; color: var(--t3); font-weight: 700; }
+.histPw   {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--t2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.histBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 100px;
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--purple);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  white-space: nowrap;
+}
+.histDate { font-size: 11px; color: var(--t3); white-space: nowrap; }
+.histNote {
+  font-size: 11px;
+  color: var(--t3);
+  line-height: 1.6;
+  padding: 9px 11px;
+  background: rgba(168, 85, 247, 0.04);
+  border: 1px solid rgba(168, 85, 247, 0.12);
+  border-radius: 6px;
+}
+
+/* ── Security tips grid ── */
+.tipGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 13px;
+  max-width: 860px;
+}
+.tipCard {
+  background: var(--card);
+  border: 1px solid var(--bord);
+  border-radius: 13px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition: 0.2s;
+}
+.tipCard:hover { border-color: rgba(0, 229, 160, 0.15); transform: translateY(-2px); }
+.tipIcon  { font-size: 24px; }
+.tipTitle { font-family: var(--disp); font-size: 14px; font-weight: 700; }
+.tipBody  { font-size: 12px; color: var(--t2); line-height: 1.7; }
+
+/* ── Vault tab ── */
+.vaultWrap { max-width: 720px; display: flex; flex-direction: column; gap: 16px; }
+
+.vaultTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vaultCount {
+  font-size: 12px;
+  color: var(--t3);
+  font-family: var(--mono);
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 17px;
+  border-radius: 10px;
+  background: rgba(0, 229, 160, 0.1);
+  border: 1px solid rgba(0, 229, 160, 0.25);
+  color: var(--green);
+  font-size: 13px;
+  font-family: var(--mono);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.addBtn:hover { background: rgba(0, 229, 160, 0.18); transform: translateY(-1px); }
+
+/* ── Add form card ── */
+.addForm {
+  background: var(--card);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeSlideDown 0.2s ease;
+}
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.addFormTitle {
+  font-family: var(--disp);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.addFormRow { display: flex; gap: 10px; }
+.addFormRow > * { flex: 1; }
+
+.addFormActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+/* ── Vault entry list ── */
+.vaultList { display: flex; flex-direction: column; gap: 9px; }
+
+.vaultEntry {
+  background: var(--card);
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s;
+}
+.vaultEntry:hover { border-color: rgba(0, 229, 160, 0.18); }
+
+.vaultSiteIcon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0,229,160,.15), rgba(0,150,255,.15));
+  border: 1px solid var(--bord);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.vaultEntryInfo { flex: 1; min-width: 0; }
+
+.vaultSiteName {
+  font-family: var(--disp);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vaultPwRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.vaultPw {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--t2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+  user-select: all;
+}
+
+.vaultNotes {
+  font-size: 11px;
+  color: var(--t3);
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eyeSmall {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--t3);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: 0.15s;
+  flex-shrink: 0;
+}
+.eyeSmall:hover { color: var(--t1); }
+
+.copyBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--t3);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  gap: 3px;
+  font-family: var(--mono);
+  transition: 0.15s;
+  flex-shrink: 0;
+}
+.copyBtn:hover { color: var(--green); }
+
+.vaultEntryDate { font-size: 10px; color: var(--t3); white-space: nowrap; flex-shrink: 0; }
+
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--t3);
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: 0.15s;
+  flex-shrink: 0;
+}
+.deleteBtn:hover { color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+
+.vaultNote {
+  font-size: 11px;
+  color: var(--t3);
+  line-height: 1.6;
+  padding: 9px 11px;
+  background: rgba(0, 150, 255, 0.04);
+  border: 1px solid rgba(0, 150, 255, 0.12);
+  border-radius: 6px;
+}
+
+/* ── Breach Center ── */
+.breachWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 860px;
+}
+
+.breachPanels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 680px) { .breachPanels { grid-template-columns: 1fr; } }
+
+.breachPanel {
+  background: var(--card);
+  border: 1px solid var(--bord);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.breachPanelHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.breachPanelTitle {
+  font-family: var(--disp);
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breachPanelSub {
+  font-size: 11px;
+  color: var(--t3);
+  line-height: 1.5;
+}
+
+.breachInputRow {
+  display: flex;
+  gap: 8px;
+}
+
+.breachInputRow .inp { flex: 1; font-size: 13px; }
+
+.checkBtn {
+  padding: 9px 16px;
+  border-radius: 10px;
+  background: rgba(0, 229, 160, 0.1);
+  border: 1px solid rgba(0, 229, 160, 0.25);
+  color: var(--green);
+  font-size: 12px;
+  font-family: var(--mono);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+.checkBtn:hover:not(:disabled) { background: rgba(0, 229, 160, 0.2); }
+.checkBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Result states ── */
+.breachSafe {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  background: rgba(0, 229, 160, 0.06);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  animation: fadeIn 0.3s ease;
+}
+
+.breachFound {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.breachFoundHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ef4444;
+}
+
+.breachCount {
+  font-size: 11px;
+  color: var(--t3);
+  font-family: var(--mono);
+  margin-left: auto;
+}
+
+.breachList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.breachList::-webkit-scrollbar { width: 4px; }
+.breachList::-webkit-scrollbar-track { background: transparent; }
+.breachList::-webkit-scrollbar-thumb { background: var(--bord); border-radius: 4px; }
+
+.breachCard {
+  background: var(--inp);
+  border: 1px solid var(--bord);
+  border-radius: 9px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: 0.15s;
+}
+.breachCard:hover { border-color: rgba(239, 68, 68, 0.2); }
+
+.breachCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.breachName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--t1);
+}
+
+.breachDate {
+  font-size: 10px;
+  color: var(--t3);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+.breachDataClasses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.breachTag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 100px;
+  background: rgba(239, 68, 68, 0.08);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  font-family: var(--mono);
+}
+
+.pwBreachResult {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+.pwBreachCount {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+}
+
+.pwBreachBig {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: var(--disp);
+  color: #ef4444;
+}
+
+.pwBreachLabel {
+  font-size: 12px;
+  color: var(--t2);
+  line-height: 1.5;
+}
+
+.noKeyWarning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fbbf24;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.securityWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 860px;
+}
